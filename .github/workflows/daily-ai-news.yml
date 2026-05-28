@@ -15,7 +15,7 @@ jobs:
     steps:
       # 第1步：拉取仓库代码
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # 第2步：安装 Python
       - name: 安装 Python
