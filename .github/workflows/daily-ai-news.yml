@@ -1,34 +1,31 @@
 name: 每日AI资讯推送
 
 on:
-  # 定时触发：UTC 23:00 = 北京时间 07:00
   schedule:
-    - cron: '0 23 * * *'
-
-  # 手动触发（方便测试）
+    - cron: '0 23 * * *'  # UTC 23:00 = 北京时间 07:00
   workflow_dispatch:
+
+permissions:
+  contents: write  # 允许推送 docs 目录到仓库
 
 jobs:
   push-news:
     runs-on: ubuntu-latest
 
     steps:
-      # 第1步：拉取仓库代码
       - name: 检出代码
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      # 第2步：安装 Python
       - name: 安装 Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 第3步：安装依赖
       - name: 安装依赖
-        run: pip install requests feedparser beautifulsoup4 lunarcalendar
+        run: pip install requests lunarcalendar
 
-      # 第4步：运行脚本
       - name: 执行推送脚本
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: python DailyAINews.py
