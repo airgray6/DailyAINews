@@ -151,30 +151,34 @@ def fetch_daily_news():
     return [], "none"
 
 
-def build_html_message(sections, source_type, quote_en, quote_cn):
-    """构建 HTML 格式的推送消息（按分类展示，每条带来源和链接）"""
+def build_markdown_message(sections, source_type, quote_en, quote_cn):
+    """构建 Markdown 格式的推送消息（按分类展示，每条带来源和链接）"""
     today = get_beijing_now()
     week_days = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
     week_day = week_days[today.weekday()]
     lunar_str = get_lunar_date_str(today)
     date_str = f"{today.year}年{today.month:02d}月{today.day:02d}日 {week_day}{lunar_str}"
 
-    # 统计总条数
     total = sum(len(sec["items"]) for sec in sections)
     subtitle = "AI HOT 日报" if source_type == "daily" else "AI HOT 精选"
 
-    # 构建各分类 HTML
-    sections_html = ""
+    lines = []
+    lines.append(f"# 📡 每日AI资讯")
+    lines.append(f"")
+    lines.append(f"**{date_str}**")
+    lines.append(f"")
+    lines.append(f"{subtitle} · 共 {total} 条")
+    lines.append(f"")
+    lines.append(f"---")
+
     idx = 0
     for sec in sections:
         cat = sec["category"]
         items = sec["items"]
-        
-        # 分类标题
-        sections_html += f'''
-    <div style="margin:18px 0 8px 0;padding:8px 12px;background:#f0f4ff;border-left:3px solid #667eea;border-radius:0 6px 6px 0;font-size:15px;font-weight:bold;color:#4338ca;">
-      {cat}（{len(items)} 篇）
-    </div>'''
+
+        lines.append(f"")
+        lines.append(f"## {cat}（{len(items)} 篇）")
+        lines.append(f"")
 
         for item in items:
             idx += 1
@@ -183,64 +187,40 @@ def build_html_message(sections, source_type, quote_en, quote_cn):
             source = item["source"]
             summary = item["summary"]
 
-            # 来源标签（醒目的灰色背景标签）
-            source_tag = ""
-            if source:
-                source_tag = f' <span style="background:#eef1f5;color:#555;font-size:12px;padding:2px 8px;border-radius:4px;">[{source}]</span>'
+            # 标题行：带序号 + 来源
+            source_tag = f"  `{source}`" if source else ""
+
+            if url:
+                lines.append(f"**{idx}.** [{title}]({url}){source_tag}")
+            else:
+                lines.append(f"**{idx}.** {title}{source_tag}")
 
             # 摘要行
-            summary_html = ""
             if summary:
                 short = summary[:100] + "..." if len(summary) > 100 else summary
-                summary_html = f'<div style="font-size:13px;color:#888;margin-top:4px;line-height:1.5;">{short}</div>'
+                lines.append(f"")
+                lines.append(f"> {short}")
 
-            # 原文链接行（单独一行，蓝色醒目可点击）
-            link_html = ""
-            if url:
-                link_html = f'<div style="margin-top:4px;"><a href="{url}" style="color:#1a73e8;font-size:13px;text-decoration:underline;" target="_blank">🔗 查看原文</a></div>'
+            lines.append(f"")
 
-            sections_html += f'''
-    <div style="margin:8px 0;padding:10px 12px;border-bottom:1px solid #f0f0f0;">
-      <div style="line-height:1.6;font-size:15px;">
-        <span style="color:#667eea;font-weight:bold;">{idx}.</span>
-        <b>{title}</b>{source_tag}
-      </div>{summary_html}{link_html}
-    </div>'''
+    # 每日一句
+    lines.append(f"---")
+    lines.append(f"")
+    lines.append(f"### ✨ 每日一句")
+    lines.append(f"")
+    lines.append(f"*{quote_en}*")
+    lines.append(f"")
+    lines.append(f"{quote_cn}")
+    lines.append(f"")
+    lines.append(f"---")
+    lines.append(f"")
+    lines.append(f"数据来源：[AI HOT](https://aihot.virxact.com) ｜ 每日一句：[金山词霸](http://open.iciba.com)")
 
-    html = f'''
-<div style="max-width:640px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#1a1a1a;">
-
-  <!-- 头部 -->
-  <div style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:18px 20px;border-radius:10px 10px 0 0;text-align:center;">
-    <div style="font-size:18px;font-weight:bold;">📡 每日AI资讯</div>
-    <div style="font-size:13px;margin-top:6px;opacity:0.9;">{date_str}</div>
-    <div style="font-size:12px;margin-top:4px;opacity:0.7;">{subtitle} · 共 {total} 条</div>
-  </div>
-
-  <!-- 新闻列表 -->
-  <div style="background:#fff;padding:4px 8px;border-left:1px solid #e5e7eb;border-right:1px solid #e5e7eb;">
-    {sections_html}
-  </div>
-
-  <!-- 每日一句 -->
-  <div style="background:#f8f9fa;padding:16px 20px;border:1px solid #e5e7eb;border-top:none;">
-    <div style="font-size:13px;color:#6b7280;margin-bottom:6px;">✨ 每日一句</div>
-    <div style="font-size:14px;color:#374151;font-style:italic;line-height:1.6;">{quote_en}</div>
-    <div style="font-size:14px;color:#6b7280;margin-top:4px;">{quote_cn}</div>
-  </div>
-
-  <!-- 底部 -->
-  <div style="background:#f8f9fa;padding:10px 20px;border-radius:0 0 10px 10px;border:1px solid #e5e7eb;border-top:none;text-align:center;font-size:12px;color:#9ca3af;">
-    数据来源：<a href="https://aihot.virxact.com" style="color:#667eea;">AI HOT</a> ｜ 每日一句：<a href="http://open.iciba.com" style="color:#667eea;">金山词霸</a>
-  </div>
-
-</div>
-'''
-    return html.strip()
+    return "\n".join(lines)
 
 
-def send_to_wechat(title, html_content):
-    """通过 PushPlus 推送 HTML 消息到微信"""
+def send_to_wechat(title, content):
+    """通过 PushPlus 推送 Markdown 消息到微信"""
     if not PUSHPLUS_TOKEN or PUSHPLUS_TOKEN == "你的PushPlus_Token":
         print("[错误] 未配置 PUSHPLUS_TOKEN，请设置环境变量！")
         return False
@@ -249,8 +229,8 @@ def send_to_wechat(title, html_content):
     data = {
         "token": PUSHPLUS_TOKEN,
         "title": title,
-        "content": html_content,
-        "template": "html",
+        "content": content,
+        "template": "markdown",
     }
 
     try:
@@ -278,7 +258,7 @@ def main():
     if not sections:
         send_to_wechat(
             "每日AI资讯获取失败",
-            "<p>未能从 AIHOT API 获取到任何新闻，请检查数据源状态。</p>"
+            "未能从 AIHOT API 获取到任何新闻，请检查数据源状态。"
         )
         print("[结束] 未获取到新闻")
         return
@@ -291,7 +271,7 @@ def main():
     print(f"[每日一句] {quote_en} / {quote_cn}")
 
     # 3. 构建并推送
-    html_content = build_html_message(sections, source_type, quote_en, quote_cn)
+    html_content = build_markdown_message(sections, source_type, quote_en, quote_cn)
     today_str = get_beijing_now().strftime("%m月%d日")
     title = f"每日AI资讯 ({today_str})"
 
