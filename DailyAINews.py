@@ -183,30 +183,28 @@ def build_html_message(sections, source_type, quote_en, quote_cn):
             source = item["source"]
             summary = item["summary"]
 
-            # 来源标签
+            # 来源标签（醒目的灰色背景标签）
             source_tag = ""
             if source:
-                source_tag = f'<span style="display:inline-block;background:#e8eaed;color:#5f6368;font-size:11px;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;">{source}</span>'
-
-            # 标题行（带链接 + 来源）
-            if url:
-                title_html = f'<a href="{url}" style="color:#1a1a1a;text-decoration:none;font-weight:500;" target="_blank">{title}</a>'
-            else:
-                title_html = f'<span style="font-weight:500;">{title}</span>'
+                source_tag = f' <span style="background:#eef1f5;color:#555;font-size:12px;padding:2px 8px;border-radius:4px;">[{source}]</span>'
 
             # 摘要行
             summary_html = ""
             if summary:
-                # 截取合理长度
-                short = summary[:120] + "..." if len(summary) > 120 else summary
-                summary_html = f'<div style="font-size:13px;color:#6b7280;margin-top:3px;line-height:1.5;">{short}</div>'
+                short = summary[:100] + "..." if len(summary) > 100 else summary
+                summary_html = f'<div style="font-size:13px;color:#888;margin-top:4px;line-height:1.5;">{short}</div>'
+
+            # 原文链接行（单独一行，蓝色醒目可点击）
+            link_html = ""
+            if url:
+                link_html = f'<div style="margin-top:4px;"><a href="{url}" style="color:#1a73e8;font-size:13px;text-decoration:underline;" target="_blank">🔗 查看原文</a></div>'
 
             sections_html += f'''
-    <div style="margin:8px 0;padding:8px 12px;border-bottom:1px solid #f3f4f6;">
-      <div style="line-height:1.6;">
-        <span style="color:#667eea;font-weight:bold;font-size:14px;">{idx}.</span>
-        {title_html}{source_tag}
-      </div>{summary_html}
+    <div style="margin:8px 0;padding:10px 12px;border-bottom:1px solid #f0f0f0;">
+      <div style="line-height:1.6;font-size:15px;">
+        <span style="color:#667eea;font-weight:bold;">{idx}.</span>
+        <b>{title}</b>{source_tag}
+      </div>{summary_html}{link_html}
     </div>'''
 
     html = f'''
