@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日AI资讯 05月28日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; line-height: 1.6; }
+.container { max-width: 680px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 24px 20px; text-align: center; }
+.header h1 { font-size: 22px; margin-bottom: 6px; }
+.header .date { font-size: 14px; opacity: 0.9; }
+.header .sub { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+.content { background: #fff; padding: 12px 16px; }
+.section-title { margin: 16px 0 8px 0; padding: 8px 12px; background: #f0f4ff; border-left: 3px solid #667eea; border-radius: 0 6px 6px 0; font-size: 16px; font-weight: bold; color: #4338ca; }
+.news-item { padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+.news-item:last-child { border-bottom: none; }
+.news-title { font-size: 15px; line-height: 1.6; }
+.news-title a { color: #1a73e8; text-decoration: none; font-weight: 500; }
+.news-title a:hover { text-decoration: underline; }
+.idx { color: #667eea; font-weight: bold; }
+.source { display: inline-block; background: #eef1f5; color: #555; font-size: 12px; padding: 1px 8px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+.summary { font-size: 13px; color: #666; margin-top: 6px; line-height: 1.6; }
+.quote { background: #f9fafb; padding: 16px 20px; border-top: 1px solid #eee; }
+.quote .label { font-size: 13px; color: #999; margin-bottom: 6px; }
+.quote .en { font-size: 14px; color: #374151; font-style: italic; }
+.quote .cn { font-size: 14px; color: #888; margin-top: 4px; }
+.footer { text-align: center; padding: 12px; font-size: 12px; color: #aaa; }
+.footer a { color: #667eea; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📡 每日AI资讯</h1>
+        <div class="date">2026年05月28日 星期四 农历四月十二</div>
+        <div class="sub">AI HOT 日报 · 共 28 条</div>
+    </div>
+    <div class="content">
+        
+        <div class="section-title">产品发布/更新（8 篇）</div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">1.</span> <span>Runway 推出 Model Context Protocol 服务器</span> </div>
+            <div class="summary">Runway 正式推出 Runway MCP 服务器，允许任何兼容 MCP 的 AI 智能体（如 Claude、ChatGPT、Cursor）在对话界面中直接生成图像与视频，无需切换工作流。该服务器接入了 Runway 最新的多款 SOTA...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">2.</span> <span>Claude Code v2.1.152 更新发布</span> </div>
+            <div class="summary">Claude Code 发布 v2.1.152 版本更新。核心改进包括：`/code-review --fix` 现在会将审查建议直接应用于工作目录；技能与斜杠命令支持通过 frontmatter 的 `disallowed-tools` ...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">3.</span> <span>OpenAI产品支持私有MCP服务器安全连接</span> </div>
+            <div class="summary">您的团队可以在内部网络中保留MCP服务器，同时ChatGPT、Codex和Responses API通过仅出站HTTPS进行连接。</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">4.</span> <span>开源FastVideo Dreamverse实时视频生成工具</span> </div>
+            <div class="summary">🚀仅需7秒即可生成30秒1080p视频！ 我们开源了FastVideo Dreamverse：基于单张NVIDIA B200 GPU和LTX-2模型，实现实时视频生成的氛围引导工具。 Repo: https://github.com/hao...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">5.</span> <span>Grok编程智能体登陆Kilo IDE平台</span> </div>
+            <div class="summary">在 @kilocode 中使用您的 SuperGrok 或 X Premium+ 订阅。 尝试 grok-build-0.1，享受高速和智能体编程智能，可在 Kilo IDE 扩展或 CLI 中使用。 https://x.ai/news/g...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">6.</span> <span>Perplexity开源Unigram分词器降低CPU占用</span> </div>
+            <div class="summary">我们开源了重新构建的Unigram分词器，可将CPU占用降低5-6倍。 小型重排序器和嵌入模型在GPU上运行时间仅为个位数毫秒，使得CPU分词成为总延迟的重要组成部分。 http://github.com/perplexityai/pplx...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">7.</span> <span>通过万亿参数与 Hub Bucket 实现增量权重同步：TRL 中的增量权重同步</span> </div>
+            <div class="summary">本文标题涉及 Hugging Face TRL 框架中一项具体的增量权重同步技术。正文重申了 Hugging Face 的核心使命，即致力于通过开源和开放科学，来推动人工智能的进步与普及。</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">8.</span> <span>OpenCode与MiMo V2.5限时免费开放</span> </div>
+            <div class="summary">OpenCode x MiMo V2.5 - 限时免费 1M 上下文 • 推理 • 文本 • 图像</div>
+        </div>
+        <div class="section-title">行业动态（8 篇）</div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">9.</span> <span>黄仁勋展示英伟达台湾新园区</span> </div>
+            <div class="summary">黄仁勋展示了新的台湾园区。 英伟达计划每年在台湾投资约1500亿美元。 就在竞争对手AMD宣布将向台湾AI领域投资超过100亿美元一周后。</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">10.</span> <span>我国将加快研究推进人工智能健康发展综合性立法、低空经济立法等</span> </div>
+            
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">11.</span> <span>Cognition成为全球最大独立智能体实验室</span> </div>
+            <div class="summary">Cognition宣布已成为全球最大的独立智能体实验室。公司完成超10亿美元融资，估值达260亿美元，由Lux Capital、General Catalyst等领投。其企业使用量自年初增长超10倍，年化收入增至4.92亿美元。Cognit...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">12.</span> <span>教皇没对AGI上头</span> </div>
+            <div class="summary">教皇 Leo XIV 发布题为《Magnifica Humanitas》的通谕，警告人工智能的使用绝非纯粹技术问题，当其进入影响人类生活的过程时，便触及权利、机会、地位与自由。通谕发布时，Anthropic 联合创始人 Christophe...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">13.</span> <span>消息称高通与字节跳动达成 AI ASIC 芯片合作，采购量在数百万颗级别</span> </div>
+            
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">14.</span> <span>阿里云入选Omdia智能体AI市场雷达领导者</span> </div>
+            <div class="summary">阿里云在Omdia的智能体AI市场雷达中被评为领导者。Omdia强调了阿里云在每一层的全栈能力，认可其是首个将整个平台围绕智能体范式进行构建的云服务商。</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">15.</span> <span>阿里云成为PyTorch基金会白金会员</span> </div>
+            <div class="summary">阿里云宣布以白金会员身份加入PyTorch基金会。作为AI基础设施全球领导者，阿里云是开源模型家族Qwen的缔造方，已在多样化硬件上大规模运行PyTorch，将为社区带来生产级工程经验。</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">16.</span> <span>2026年选举信息与保障</span> </div>
+            <div class="summary">在2026年全球选举临近之际，通过帮助公众获取选举信息、支持网络防御者以及提升人工智能透明度这三方面的努力，来为选举提供保障。</div>
+        </div>
+        <div class="section-title">论文研究（4 篇）</div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">17.</span> <span>Fast, faster, Qwen. 🚀</span> </div>
+            <div class="summary">Qwen3.5在TokenSpeed推理引擎上，针对智能体工作负载达到了创纪录的580 tokens per second (tps)速度。这一成果由通义千问推理团队、lightseekorg Foundation TokenSpeed团队...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">18.</span> <span>ITBench-AA：前沿大模型在首个智能体企业IT任务基准测试中得分均低于50%</span> </div>
+            <div class="summary">由Artificial Analysis和IBM推出的ITBench-AA SRE基准测试显示，所有前沿大模型得分均未超过50%。Claude Opus 4.7（自适应推理，最大努力）以47%领先，GPT-5.5（xhigh）和Qwen3....</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">19.</span> <span>通过零信任聚合实现的隐私分析</span> </div>
+            <div class="summary">Google Research 推出了一种新的隐私分析解决方案。该方案结合了一种新的密码学安全聚合协议与可信执行环境（TEE）的透明性，旨在实现前沿的隐私与安全保证。其核心是基于零信任原则，通过密码学与硬件保护的结合，确保系统仅能获取群体的...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">20.</span> <span>社会科学中的编码智能体</span> </div>
+            <div class="summary">一项针对1260名定量社会科学家的调查显示，虽然81%的受访者用过AI聊天机器人，但仅有20%将Claude Code、Codex等编码智能体常规应用于工作。采用率存在显著差异：以男性名字命名的研究者使用率是女性研究者的两倍；顶尖大学研究者...</div>
+        </div>
+        <div class="section-title">技巧与观点（8 篇）</div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">21.</span> <span>与Google搜索产品副总裁Robby Stein的访谈：AI原生搜索时代</span> </div>
+            <div class="summary">本文记录了与Google搜索产品副总裁Robby Stein在Google I/O的访谈，核心探讨Google Search向“AI原生”模式的重大转变。讨论话题包括AI Mode是进化还是重塑、如何将复杂问题拆解为多轮搜索、AI搜索的高运...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">22.</span> <span>藏师傅发布小红书图文排版AI Skill，集成地图与自动配图</span> </div>
+            <div class="summary">该推文介绍了guizang-social-card-skill，一款针对小红书图文常见类别进行优化的AI Skill。其亮点在于为旅行博主集成了地图组件，用户输入目的地和线路后，AI能自动在底图上标记并嵌入图片。根据引用，该Skill完全基...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">23.</span> <span>使用大语言模型保障源代码安全</span> </div>
+            <div class="summary">本文分享了使用 Claude Opus 构建威胁模型、发现代码漏洞并进行验证、分类和修复的最佳实践。其核心流程是一个六步循环：威胁建模、沙箱隔离、漏洞发现、验证、分类和修复。作者指出，漏洞发现现在易于并行化，瓶颈已转移到后续的验证与处理阶段...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">24.</span> <span>用好 Coding Agent，重点是两头，尤其是开头的部分，如果一开始就走偏了后面怎么改都改不好。</span> </div>
+            <div class="summary">用好 Coding Agent 的关键在于初始规划。方法是先将需求整理后，用最强模型（如 GPT-5.5、Claude Opus 4.7）分别在 Codex、Claude Code、Cursor 的 Plan 模式下生成设计方案，选择最优方...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">25.</span> <span>我认为 Anthropic 和 OpenAI 找到了产品市场契合点</span> </div>
+            <div class="summary">Anthropic 与 OpenAI 通过编程智能体找到了产品市场契合点，这导致企业客户成本显著上升。两家公司已于 2026 年 4 月前后调整了企业套餐定价，从原先的高额折扣改为与 API 用量挂钩。Anthropic Enterpris...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">26.</span> <span>Reachy Mini 实现完全本地化语音交互</span> </div>
+            <div class="summary">Reachy Mini 机器人现可通过 `speech-to-speech` 库实现完全本地化的语音交互，无需依赖云端。该方案采用级联流水线架构，对外提供 Realtime API 兼容的 WebSocket 接口。默认组件包括 Siler...</div>
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">27.</span> <span>OpenAI 奥尔特曼称 AI 对白领冲击不如预期般严重：我很高兴自己当时错了</span> </div>
+            
+        </div>
+        <div class="news-item">
+            <div class="news-title"><span class="idx">28.</span> <span>AI智能体的零信任安全框架</span> </div>
+            <div class="summary">Anthropic 发布了针对企业部署自主 AI 智能体的安全框架，指出前沿大语言模型正将漏洞利用周期从数月压缩至数小时。部署智能体面临双重风险：基础设施易受 AI 加速攻击，且智能体自身具备自主决策与执行能力。文章提出一个三层零信任架构（...</div>
+        </div>
+    </div>
+    <div class="quote">
+        <div class="label">✨ 每日一句</div>
+        <div class="en">By the pond, kids splash water with bare feet.</div>
+        <div class="cn">池塘边，孩子们光着脚丫踩水花。</div>
+    </div>
+    <div class="footer">
+        数据来源：<a href="https://aihot.virxact.com">AI HOT</a> ｜ 每日一句：<a href="http://open.iciba.com">金山词霸</a>
+    </div>
+</div>
+</body>
+</html>
