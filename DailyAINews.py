@@ -189,17 +189,18 @@ def build_markdown_message(sections, source_type, quote_en, quote_cn):
 
             # 标题行：带序号 + 来源
             source_tag = f"  `{source}`" if source else ""
-
-            if url:
-                lines.append(f"**{idx}.** [{title}]({url}){source_tag}")
-            else:
-                lines.append(f"**{idx}.** {title}{source_tag}")
+            lines.append(f"**{idx}.** {title}{source_tag}")
 
             # 摘要行
             if summary:
                 short = summary[:100] + "..." if len(summary) > 100 else summary
                 lines.append(f"")
                 lines.append(f"> {short}")
+
+            # 原文链接（单独一行，纯文本URL，微信可自动识别为可点击链接）
+            if url:
+                lines.append(f"")
+                lines.append(f"🔗 {url}")
 
             lines.append(f"")
 
